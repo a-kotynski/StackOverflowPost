@@ -12,6 +12,8 @@ namespace StackOverflowPost
         public string Title { get; set; }
         public string Description { get; set; }
         public DateTime CreationTime { get; set; }
+        public List<string> UpVoteList { get; set; }
+        public List<string> DownVoteList { get; set; }
         public Post(string postTitle, string postDesc, DateTime postTime)
         {
             this.Title = postTitle;
@@ -63,12 +65,19 @@ namespace StackOverflowPost
         {
             Console.WriteLine("Post Title: ");
             var title = Console.ReadLine();
+
             Console.WriteLine("Post Description: ");
             var description = Console.ReadLine();
+
             var creationTime = DateTime.Now;
 
             Post post = new Post(title, description, creationTime);
-            Console.WriteLine("Type 'exit' to exit.");
+            
+            Console.WriteLine($"Post title: \"{post.Title}\"\n" +
+                $"Post description: \"{post.Description}\"\n" +
+                $"Post creation time: \"{post.CreationTime}\"\n");
+            
+            Console.WriteLine("Vote time! Type 'exit' to exit.");
             post.UpVote();
             post.DownVote();
         }
